@@ -7,93 +7,61 @@
 
 import SwiftUI
 
+public struct ButtonScheme {
+    public let textColor: Color
+    public let normalColor: Color
+    public let highlightColor: Color
+    public let font: Font
+    public let cornerRadius: CGFloat
+    
+    static public var `default` = ButtonScheme(textColor: .black, normalColor: .gray, highlightColor: .black, font: .system(size: 12, weight: .bold), cornerRadius: 10)
+}
+
 public struct BorderedText: View {
-    @State var text: String
-    @State var selected: Bool = true
+    public let text: String
+    public let scheme: ButtonScheme
+    @Binding var selected: Bool
 
-    var textColor: Color = .white
-    var normalColor: Color = .blue
-    var highlightColor: Color = .blue
-
-    var font: Font = .system(size: 12, weight: .bold)
-    var cornerRadius: CGFloat = 10
-    var lineLimit: Int? = nil
+    public var lineLimit: Int = 1
 
     public var body: some View {
-        let bgColor: Color = selected ? self.normalColor : self.highlightColor
+        let bgColor: Color = selected ? scheme.normalColor : scheme.highlightColor
         let fgColor: Color = selected ? .white : .white
 
         Text(text)
             .multilineTextAlignment(.center)
-            .lineLimit(lineLimit ?? 1)
-            .font(font)
+            .lineLimit(lineLimit)
+            .font(scheme.font)
             .padding(10)
             // .lineSpacing(10.0)
             // .frame(height: height)
             .background(bgColor)
             .foregroundColor(fgColor)
-            .cornerRadius(cornerRadius)
+            .cornerRadius(scheme.cornerRadius)
             // 角丸ボーダーライン
             .overlay(
-                RoundedRectangle(cornerRadius: cornerRadius)
+                RoundedRectangle(cornerRadius: scheme.cornerRadius)
                     .stroke(selected ? Color(UIColor.darkGray) : Color(UIColor.systemGray3), lineWidth: 1)
             )
     }
-
-    public init(text: String, selected: Bool = false, textColor: Color, normalColor: Color, highlightColor: Color, font: Font, cornerRadius: CGFloat, lineLimit: Int? = nil) {
-        _text = State(initialValue: text)
-        _selected = State(initialValue: selected)
-
-        self.normalColor = normalColor
-        self.highlightColor = highlightColor
-        self.font = font
-        self.cornerRadius = cornerRadius
-        self.lineLimit = lineLimit
+    
+    public init(text: String, scheme: ButtonScheme, selected: Binding<Bool>) {
+        self.text = text
+        self.scheme = scheme
+        _selected = selected
     }
 }
 
-//public extension BorderedText {
-//    func selected(_ selected: Bool) -> Self {
-//        _selected = State(initialValue: selected)
-//        return self
-//    }
-//    
-//    func textColor(_ color: Color) -> Self {
-//        self.textColor = color
-//        return self
-//    }
-//    
-//    func normalColor(_ color: Color) -> Self {
-//        self.normalColor = color
-//        return self
-//    }
-//    
-//    func highlightColor(_ color: Color) -> Self {
-//        self.highlightColor = color
-//        return self
-//    }
-//    
-//    func font(_ font: Font) -> Self {
-//        self.font = font
-//        return self
-//    }
-//    
-//    func cornerRadius(_ cornerRadius: CGFloat) -> Self {
-//        self.cornerRadius = cornerRadius
-//        return self
-//    }
-//
-//    func lineLimit(_ lineLimit: Int) -> Self {
-//        self.lineLimit = lineLimit
-//        return self
-//    }
-//}
+struct BorderedText_Previews: PreviewProvider {
+    static var text: String = "これはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ"
+    static var scheme: ButtonScheme = .default
+    @State static var selected: Bool = true
+    @State static var notSelected: Bool = false
 
-struct BorderButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            BorderedText(text: "これはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ", selected: true, textColor: .white, normalColor: .blue, highlightColor: .gray, font: .system(size: 32, weight: .bold), cornerRadius: 10)
-            BorderedText(text: "これはテストだよ", selected: false, textColor: .white, normalColor: .blue, highlightColor: .gray, font: .system(size: 32, weight: .bold), cornerRadius: 10)
+            BorderedText(text: text, scheme: scheme, selected: $selected)
+            BorderedText(text: text, scheme: scheme, selected: $notSelected)
         }
     }
 }
