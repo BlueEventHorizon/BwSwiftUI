@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct ImageText: View {
+public struct ImageText: View {
     var title: String
     var image: String
     var backgroundColor: Color
 
-    var body: some View {
+    public var body: some View {
         VStack {
             HStack {
                 Image(systemName: image)

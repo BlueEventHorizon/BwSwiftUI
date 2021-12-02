@@ -8,11 +8,11 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-struct TextFeild: View {
+public struct TextFeild: View {
     @Binding var text: String
     @Binding var placeHolder: String
 
-    var body: some View {
+    public var body: some View {
         ZStack(alignment: .topLeading) {
             if text.isEmpty {
                 VStack {
@@ -40,11 +40,11 @@ struct TextFeild: View {
 }
 
 @available(iOS 14.0, *)
-struct TextFeild_Previews: PreviewProvider {
+public struct TextFeild_Previews: PreviewProvider {
     @State static var text: String = ""
     @State static var placeHolder: String = "ここに何か書いてボタンを押す"
 
-    static var previews: some View {
+    public static var previews: some View {
         TextFeild(text: $text, placeHolder: $placeHolder)
     }
 }
