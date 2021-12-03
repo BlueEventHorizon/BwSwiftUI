@@ -13,9 +13,9 @@ public struct ButtonScheme {
     public let highlightColor: Color
     public let font: Font
     public let cornerRadius: CGFloat
-    
-    static public var `default` = ButtonScheme(textColor: .black, normalColor: .gray, highlightColor: .black, font: .system(size: 12, weight: .bold), cornerRadius: 10)
-    
+
+    public static var `default` = ButtonScheme(textColor: .black, normalColor: .gray, highlightColor: .black, font: .system(size: 12, weight: .bold), cornerRadius: 10)
+
     public init(textColor: Color, normalColor: Color, highlightColor: Color, font: Font, cornerRadius: CGFloat) {
         self.textColor = textColor
         self.normalColor = normalColor
@@ -52,7 +52,7 @@ public struct BorderedText: View {
                     .stroke(selected ? Color(UIColor.darkGray) : Color(UIColor.systemGray3), lineWidth: 1)
             )
     }
-    
+
     public init(text: String, scheme: ButtonScheme, selected: Binding<Bool>) {
         self.text = text
         self.scheme = scheme
