@@ -15,6 +15,14 @@ public struct ButtonScheme {
     public let cornerRadius: CGFloat
     
     static public var `default` = ButtonScheme(textColor: .black, normalColor: .gray, highlightColor: .black, font: .system(size: 12, weight: .bold), cornerRadius: 10)
+    
+    public init(textColor: Color, normalColor: Color, highlightColor: Color, font: Font, cornerRadius: CGFloat) {
+        self.textColor = textColor
+        self.normalColor = normalColor
+        self.highlightColor = highlightColor
+        self.font = font
+        self.cornerRadius = cornerRadius
+    }
 }
 
 public struct BorderedText: View {
