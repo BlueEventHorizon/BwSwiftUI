@@ -60,6 +60,14 @@ public struct BorderedText: View {
     }
 }
 
+@ViewBuilder private func makeBorderedButton(text: String, scheme: ButtonScheme, selected: Binding<Bool>, action: ((String) -> Void)?) -> some View {
+    Button {
+        action?(text)
+    } label: {
+        BorderedText(text: text, scheme: scheme, selected: selected)
+    }
+}
+
 struct BorderedText_Previews: PreviewProvider {
     static var text: String = "これはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ"
     static var scheme: ButtonScheme = .default
@@ -68,8 +76,8 @@ struct BorderedText_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            BorderedText(text: text, scheme: scheme, selected: $selected)
-            BorderedText(text: text, scheme: scheme, selected: $notSelected)
+            makeBorderedButton(text: text, scheme: scheme, selected: $selected) { text in print("pushed") }
+            makeBorderedButton(text: text, scheme: scheme, selected: $notSelected) { text in print("pushed") }
         }
     }
 }
