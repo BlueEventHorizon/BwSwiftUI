@@ -9,17 +9,15 @@ import SwiftUI
 
 public struct ButtonScheme {
     public let textColor: Color
-    public let normalColor: Color
-    public let highlightColor: Color
+    public let fillColor: Color
     public let font: Font
     public let cornerRadius: CGFloat
 
-    public static var `default` = ButtonScheme(textColor: .black, normalColor: .gray, highlightColor: .black, font: .system(size: 12, weight: .bold), cornerRadius: 10)
+    public static var `default` = ButtonScheme(textColor: .white, fillColor: .blue, font: .system(size: 12, weight: .bold), cornerRadius: 10)
 
-    public init(textColor: Color, normalColor: Color, highlightColor: Color, font: Font, cornerRadius: CGFloat) {
+    public init(textColor: Color, fillColor: Color, font: Font, cornerRadius: CGFloat) {
         self.textColor = textColor
-        self.normalColor = normalColor
-        self.highlightColor = highlightColor
+        self.fillColor = fillColor
         self.font = font
         self.cornerRadius = cornerRadius
     }
@@ -33,8 +31,8 @@ public struct BorderedText: View {
     public var lineLimit: Int = 1
 
     public var body: some View {
-        let bgColor: Color = selected ? scheme.normalColor : scheme.highlightColor
-        let fgColor: Color = selected ? .white : .white
+        let fillColor: Color = selected ? scheme.fillColor : scheme.fillColor
+        let textColor: Color = selected ? scheme.textColor : scheme.textColor
 
         Text(text)
             .multilineTextAlignment(.center)
@@ -43,8 +41,8 @@ public struct BorderedText: View {
             .padding(10)
             // .lineSpacing(10.0)
             // .frame(height: height)
-            .background(bgColor)
-            .foregroundColor(fgColor)
+            .background(fillColor)
+            .foregroundColor(textColor)
             .cornerRadius(scheme.cornerRadius)
             // 角丸ボーダーライン
             .overlay(
