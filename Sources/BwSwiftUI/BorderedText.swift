@@ -74,8 +74,8 @@ struct BorderedText_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            makeBorderedButton(text: text, scheme: scheme, selected: $selected) { text in print("pushed") }
-            makeBorderedButton(text: text, scheme: scheme, selected: $notSelected) { text in print("pushed") }
+            makeBorderedButton(text: text, scheme: scheme, selected: $selected) { _ in print("pushed") }
+            makeBorderedButton(text: text, scheme: scheme, selected: $notSelected) { _ in print("pushed") }
         }
     }
 }
