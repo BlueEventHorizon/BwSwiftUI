@@ -26,13 +26,13 @@ public struct ButtonScheme {
 public struct BorderedText: View {
     public let text: String
     public let scheme: ButtonScheme
-    @Binding var selected: Bool
+    //@Binding var selected: Bool
 
     public var lineLimit: Int = 1
 
     public var body: some View {
-        let fillColor: Color = selected ? scheme.fillColor : scheme.fillColor
-        let textColor: Color = selected ? scheme.textColor : scheme.textColor
+        let fillColor: Color = scheme.fillColor
+        let textColor: Color = scheme.textColor
 
         Text(text)
             .multilineTextAlignment(.center)
@@ -47,35 +47,34 @@ public struct BorderedText: View {
             // 角丸ボーダーライン
             .overlay(
                 RoundedRectangle(cornerRadius: scheme.cornerRadius)
-                    .stroke(selected ? Color(UIColor.darkGray) : Color(UIColor.systemGray3), lineWidth: 1)
+                    .stroke(Color(UIColor.systemGray3), lineWidth: 1)
             )
     }
 
-    public init(text: String, scheme: ButtonScheme, selected: Binding<Bool>) {
+    public init(text: String, scheme: ButtonScheme ) {
         self.text = text
         self.scheme = scheme
-        _selected = selected
     }
 }
 
-@ViewBuilder private func makeBorderedButton(text: String, scheme: ButtonScheme, selected: Binding<Bool>, action: ((String) -> Void)?) -> some View {
+@ViewBuilder public func makeBorderedButton(text: String, scheme: ButtonScheme, action: ((String) -> Void)?) -> some View {
     Button {
         action?(text)
     } label: {
-        BorderedText(text: text, scheme: scheme, selected: selected)
+        BorderedText(text: text, scheme: scheme)
     }
 }
 
 struct BorderedText_Previews: PreviewProvider {
     static var text: String = "これはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ\nこれはテストだよ"
     static var scheme: ButtonScheme = .default
-    @State static var selected: Bool = true
-    @State static var notSelected: Bool = false
+//    @State static var selected: Bool = true
+//    @State static var notSelected: Bool = false
 
     static var previews: some View {
         Group {
-            makeBorderedButton(text: text, scheme: scheme, selected: $selected) { text in print("pushed") }
-            makeBorderedButton(text: text, scheme: scheme, selected: $notSelected) { text in print("pushed") }
+            makeBorderedButton(text: text, scheme: scheme) { text in print("pushed") }
+            // makeBorderedButton(text: text, scheme: scheme) { text in print("pushed") }
         }
     }
 }
