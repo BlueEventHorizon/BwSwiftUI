@@ -26,7 +26,7 @@ public struct ButtonScheme {
 public struct BorderedText: View {
     public let text: String
     public let scheme: ButtonScheme
-    //@Binding var selected: Bool
+    // @Binding var selected: Bool
 
     public var lineLimit: Int = 1
 
@@ -51,7 +51,7 @@ public struct BorderedText: View {
             )
     }
 
-    public init(text: String, scheme: ButtonScheme ) {
+    public init(text: String, scheme: ButtonScheme) {
         self.text = text
         self.scheme = scheme
     }
