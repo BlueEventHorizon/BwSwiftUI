@@ -1,5 +1,5 @@
 //
-//  TextFeild.swift
+//  TextField.swift
 //  LoggerApp
 //
 //  Created by Katsuhiko Terada on 2021/07/13.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-public struct TextFeild: View {
+public struct TextField: View {
     @Binding var text: String
     @Binding var placeHolder: String
 
@@ -40,11 +40,11 @@ public struct TextFeild: View {
 }
 
 @available(iOS 14.0, *)
-public struct TextFeild_Previews: PreviewProvider {
+public struct TextField_Previews: PreviewProvider {
     @State static var text: String = ""
     @State static var placeHolder: String = "ここに何か書いてボタンを押す"
 
     public static var previews: some View {
-        TextFeild(text: $text, placeHolder: $placeHolder)
+        TextField(text: $text, placeHolder: $placeHolder)
     }
 }
