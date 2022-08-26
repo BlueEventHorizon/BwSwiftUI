@@ -14,15 +14,6 @@ public struct TextField: View {
 
     public var body: some View {
         ZStack(alignment: .topLeading) {
-            if text.isEmpty {
-                VStack {
-                    Text(placeHolder)
-                        .foregroundColor(Color(UIColor.placeholderText))
-                        .padding(.leading, 5)
-                }
-                .padding()
-            }
-
             TextEditor(text: $text)
                 .frame(height: 44)
                 .lineLimit(nil)
@@ -31,6 +22,15 @@ public struct TextField: View {
                         .stroke(Color.gray, lineWidth: 1)
                 )
                 .padding(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/, 5)
+
+            if text.isEmpty {
+                VStack {
+                    Text(placeHolder)
+                        .foregroundColor(UIColor.placeholderText.color)
+                        .padding(.leading, 5)
+                }
+                .padding()
+            }
         }
         .onAppear {
             // TextEditorのplaceholder表示のため
@@ -41,10 +41,14 @@ public struct TextField: View {
 
 @available(iOS 14.0, *)
 public struct TextField_Previews: PreviewProvider {
-    @State static var text: String = ""
-    @State static var placeHolder: String = "ここに何か書いてボタンを押す"
-
     public static var previews: some View {
-        TextField(text: $text, placeHolder: $placeHolder)
+        Group {
+            TextField(text: .constant("何か"), placeHolder: .constant("ここに何か書いてボタンを押す"))
+                .previewLayout(.fixed(width: 375, height: 100))
+            TextField(text: .constant(""), placeHolder: .constant("ここに何か書いてボタンを押す"))
+                .previewLayout(.fixed(width: 375, height: 100))
+        }
+        .previewLayout(.sizeThatFits)
+        //.previewLayout(.fixed(width: 375, height: 100))
     }
 }
