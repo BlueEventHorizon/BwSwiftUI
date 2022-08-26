@@ -47,7 +47,7 @@ public struct BorderedText: View {
             // 角丸ボーダーライン
             .overlay(
                 RoundedRectangle(cornerRadius: scheme.cornerRadius)
-                    .stroke(Color(UIColor.systemGray3), lineWidth: 1)
+                    .stroke(UIColor.systemGray3.color, lineWidth: 1)
             )
     }
 
