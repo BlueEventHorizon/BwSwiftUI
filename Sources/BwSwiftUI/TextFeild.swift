@@ -39,8 +39,8 @@ public struct TextField: View {
     }
 
     public init(text: Binding<String>, placeHolder: Binding<String>) {
-        self._text = text
-        self._placeHolder = placeHolder
+        _text = text
+        _placeHolder = placeHolder
     }
 }
 
@@ -54,6 +54,6 @@ public struct TextField_Previews: PreviewProvider {
                 .previewLayout(.fixed(width: 375, height: 100))
         }
         .previewLayout(.sizeThatFits)
-        //.previewLayout(.fixed(width: 375, height: 100))
+        // .previewLayout(.fixed(width: 375, height: 100))
     }
 }
