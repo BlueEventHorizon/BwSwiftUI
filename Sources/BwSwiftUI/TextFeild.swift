@@ -9,13 +9,13 @@ import SwiftUI
 
 @available(iOS 14.0, *)
 public struct TextField: View {
-    @Binding var text: String
-    @Binding var placeHolder: String
+    @Binding public var text: String
+    @Binding public var placeHolder: String
 
     public var body: some View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $text)
-                .frame(height: 44)
+                .frame(height: 40)
                 .lineLimit(nil)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
@@ -36,6 +36,11 @@ public struct TextField: View {
             // TextEditorのplaceholder表示のため
             UITextView.appearance().backgroundColor = .clear
         }
+    }
+
+    public init(text: Binding<String>, placeHolder: Binding<String>) {
+        self._text = text
+        self._placeHolder = placeHolder
     }
 }
 
