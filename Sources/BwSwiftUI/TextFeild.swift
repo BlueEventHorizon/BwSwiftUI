@@ -15,7 +15,6 @@ public struct TextField: View {
     public var body: some View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $text)
-                .frame(height: 40)
                 .lineLimit(nil)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
@@ -32,6 +31,8 @@ public struct TextField: View {
                 .padding()
             }
         }
+        // Viewの要素をグループ化
+        .compositingGroup()
         .onAppear {
             // TextEditorのplaceholder表示のため
             UITextView.appearance().backgroundColor = .clear
