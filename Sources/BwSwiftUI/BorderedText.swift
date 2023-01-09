@@ -13,7 +13,7 @@ public struct ButtonScheme {
     public let font: Font
     public let cornerRadius: CGFloat
 
-    public static var `default` = ButtonScheme(textColor: .white, fillColor: .blue, font: .system(size: 14, weight: .bold), cornerRadius: 10)
+    public static var `default` = ButtonScheme(textColor: UIColor.systemBackground.color, fillColor: .accentColor, font: .system(size: 14, weight: .bold), cornerRadius: 10)
 
     public init(textColor: Color, fillColor: Color, font: Font, cornerRadius: CGFloat) {
         self.textColor = textColor
