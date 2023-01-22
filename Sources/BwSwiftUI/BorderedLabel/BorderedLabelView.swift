@@ -19,6 +19,13 @@ public struct BorderedLabelView: View {
             .textStyle(textStyle)
             .borderStyle(borderStyle)
     }
+    
+    public init(text: Binding<String>, imageName: Binding<String>, textStyle: Binding<TextStyle>, borderStyle: Binding<BorderStyle>) {
+        self._text = text
+        self._imageName = imageName
+        self._textStyle = textStyle
+        self._borderStyle = borderStyle
+    }
 }
 
 struct BorderedLabelView_Previews: PreviewProvider {
