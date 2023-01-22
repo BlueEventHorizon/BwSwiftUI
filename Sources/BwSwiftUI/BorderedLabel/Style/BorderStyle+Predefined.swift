@@ -22,7 +22,7 @@ public extension BorderStyle {
         case smallShadowed
 
         private var fillColor: Color {
-            Color(UIColor.secondarySystemBackground)
+            Color.secondarySystemBackground
         }
 
         public var style: BorderStyle {
@@ -33,7 +33,7 @@ public extension BorderStyle {
                         fillColor: fillColor,
                         cornerRadius: 10,
                         borderLineWidth: 1,
-                        borderLineColor: Color(UIColor.systemGray3),
+                        borderLineColor: .secondaryLabel,
                         shadowColor: .clear,
                         shadowOffset: 3
                     )
@@ -44,7 +44,7 @@ public extension BorderStyle {
                         fillColor: fillColor,
                         cornerRadius: 10,
                         borderLineWidth: 1,
-                        borderLineColor: Color(UIColor.systemGray3),
+                        borderLineColor: .secondaryLabel,
                         shadowColor: .clear,
                         shadowOffset: 3
                     )
@@ -56,7 +56,7 @@ public extension BorderStyle {
                         cornerRadius: 10,
                         borderLineWidth: 0,
                         borderLineColor: .clear,
-                        shadowColor: Color(UIColor.secondaryLabel),
+                        shadowColor: .secondaryLabel,
                         shadowOffset: 3
                     )
 
@@ -67,7 +67,7 @@ public extension BorderStyle {
                         cornerRadius: 4,
                         borderLineWidth: 0,
                         borderLineColor: .clear,
-                        shadowColor: Color(UIColor.secondaryLabel),
+                        shadowColor: .secondaryLabel,
                         shadowOffset: 2
                     )
             }
