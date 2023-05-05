@@ -1,5 +1,5 @@
 //
-//  BorderStyle+PreDefined.swift
+//  BorderStyle+Preset.swift
 //  SiruDoor
 //
 //  Created by Katsuhiko Terada on 2023/01/16.
@@ -10,12 +10,12 @@ import SwiftUI
 import UIKit
 
 public extension BorderStyle {
-    static var `default`: PreDefined = .default
-    static var bordered: PreDefined = .bordered
-    static var shadowed: PreDefined = .shadowed
-    static var smallShadowed: PreDefined = .smallShadowed
+    static var `default`: Preset = .default
+    static var bordered: Preset = .bordered
+    static var shadowed: Preset = .shadowed
+    static var smallShadowed: Preset = .smallShadowed
 
-    enum PreDefined {
+    enum Preset {
         case `default`
         case bordered
         case shadowed
@@ -76,8 +76,8 @@ public extension BorderStyle {
 }
 
 public extension Binding<BorderStyle> {
-    static let `default`: Self = .constant(.PreDefined.default.style)
-    static let bordered: Self = .constant(.PreDefined.bordered.style)
-    static let shadowed: Self = .constant(.PreDefined.shadowed.style)
-    static let smallShadowed: Self = .constant(.PreDefined.smallShadowed.style)
+    static let `default`: Self = .constant(.Preset.default.style)
+    static let bordered: Self = .constant(.Preset.bordered.style)
+    static let shadowed: Self = .constant(.Preset.shadowed.style)
+    static let smallShadowed: Self = .constant(.Preset.smallShadowed.style)
 }

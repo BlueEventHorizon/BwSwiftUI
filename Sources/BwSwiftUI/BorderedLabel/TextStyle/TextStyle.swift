@@ -23,7 +23,7 @@ public struct TextStyle {
         self.lineLimit = lineLimit
     }
 
-    public func change(font: Font? = nil,
+    public func copyAndModify(font: Font? = nil,
                        textColor: Color? = nil,
                        alignment: TextAlignment? = nil,
                        lineLimit: Int? = nil) -> TextStyle {

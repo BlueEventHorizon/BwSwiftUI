@@ -1,5 +1,5 @@
 //
-//  TextStyle+PreDefined.swift
+//  TextStyle+Preset.swift
 //  SiruDoor
 //
 //  Created by Katsuhiko Terada on 2022/11/19.
@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 
 public extension TextStyle {
-    enum PreDefined {
+    enum Preset {
         case `default`
         case multiline
 
@@ -35,6 +35,6 @@ public extension TextStyle {
 }
 
 public extension Binding<TextStyle> {
-    static let `default`: Self = .constant(.PreDefined.default.style)
-    static let multiline: Self = .constant(.PreDefined.multiline.style)
+    static let `default`: Self = .constant(.Preset.default.style)
+    static let multiline: Self = .constant(.Preset.multiline.style)
 }

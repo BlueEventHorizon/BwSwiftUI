@@ -32,7 +32,7 @@ public struct BorderStyle {
         self.shadowOffset = shadowOffset
     }
 
-    public func change(padding: CGSize? = nil,
+    public func copyAndModify(padding: CGSize? = nil,
                        fillColor: Color? = nil,
                        cornerRadius: CGFloat? = nil,
                        borderLineWidth: CGFloat? = nil,

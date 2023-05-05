@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LabelViewStyle: LabelStyle {
-    let style: TextStyle = .PreDefined.default.style
+    let style: TextStyle = .Preset.default.style
 
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 32) {
